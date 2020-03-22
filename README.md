@@ -1,8 +1,9 @@
 # project
 运行环境：anconda3.7
 demo主要使用了karate网络作为测试网络
-project存储关于社区零模型构造的文件，一共三个部分：
-construct_benchmark_network_nullmodel文件是基于随机短边重连原理构造中尺度网络
+community_nullmodel.py为自定义零模型库
+目存储关于社区零模型构造的文件，一共三个部分：
+Construct_benchmark_network_nullmodel文件是基于随机短边重连原理构造中尺度网络
 decrease_community_nullmodel文件是关于减弱社区结构零模型网络
 local_network_nullmodel文件是关于局部网络的随机断边重连
 
