@@ -159,52 +159,6 @@ def save_community_file(membership,filename,filelayout):
     save_file_layout = filelayout
     data.to_csv(save_community_name + save_file_layout,header=None,sep=' ')
 
-'''
-###################################################
-#函数名称：evaluate_network
-#功能：网络微观特性测评，计算并打印网络相关特性
-#输入参数：
-#        参数1：network_filename(待测评的网络文件)
-#        参数2：community_filename(待测评的社区文件)
-#输出参数：无
-###################################################
-''' 
-def evaluate_network(network_filename,community_filename):
- 
-    #加载变化后的网络
-    G = nx.Graph()
-    G = load_Graph(network_filename)
-    n = G.number_of_nodes()
-    M = G.number_of_edges()
-    #计算相关信息
-    K = 2*M*1.0/n                                       #计算平均度
-    avg_length = nx.average_shortest_path_length(G)     #计算平均路径长度
-    betweeness=nx.betweenness_centrality(G)             #计算betweeness介数
-    nx.degree_histogram(G)                              #度分布
-    S = nx.clustering(G)                                #聚类系数
-    c = nx.average_clustering(G)                        #平均聚类系数
-    dac = nx.degree_assortativity_coefficient(G)        #计算匹配系数
-    #计算社区数
-    filename = community_filename
-    file = open(filename,'r')
-    content = file.readlines()
-    mem = []
-    for i in range(len(content)):
-        a,b=content[i].split(' ')
-        mem.append((int(b)))
-    comm0 = mem
-    num_comm = len(set(mem))  #计算社区的数目
-    #打印信息提示
-    print('节点数为',n)
-    print('边数为',M)     
-    print('平均度为',K)
-    print('平均路径长度为',avg_length)
-    print('介数为',betweeness)
-    print('聚类系数为',S)
-    print('平均聚类系数为',c)
-    print('匹配系数为',dac)
-    print('社区数为',num_comm)
-
 # 读入网络数据        
 Gn = nx.read_edgelist('karate.txt')  
 Gn = Gn.to_undirected()             #将网络转化为无向
@@ -285,11 +239,6 @@ while steps < 100:
     else:
         print("mu =",mu)
     steps += 1
-
-#网络微观特性测试 
-evaluate_network('changed_network.txt','changed_community.txt')
-evaluate_network('karate.txt','origin_community.txt')  
-
 
 
 
