@@ -12,7 +12,7 @@
 2、减弱社区结构测试程序  
 **decrease_community_nullmodel**  
 * community_detection_algorithm.py  
-* decrease_community_structure.py 
+* ` decrease_community_structure.py`  
 * communitynullmodel_new.py  
 * karate.txt  
 ## Depend on the environment：
