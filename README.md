@@ -1,5 +1,7 @@
 # **Community Nullmodel**  
-## Project description：此项目是一个基于使用随机断边重连原理构建零模型网络。项目共有两个部分组成，分别为基于
+## Project Description：
+此项目是一个基于使用随机断边重连原理构建零模型网络，旨在依据用户生成适合的人工网络。
+项目共有两个部分组成，分别为基于
 
 运行环境：anconda3.7;  
 demo主要使用了karate网络作为测试网络;  
