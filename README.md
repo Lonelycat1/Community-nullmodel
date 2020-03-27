@@ -34,7 +34,7 @@
 基于随机断边重连原理，将社区内部的连边随机断开生成社区外的连边，将原始网络(karate网络)重构生成新网络并保存。  
 高亮部分为主程序文件，communitynullmodel_new.py、community_detection_algorithm.py和karate.txt分别为主程序所依赖的库文件与网络数据文件。   
 ## Depend on the environment：
-运行环境：*Anconda3.7*  
+运行环境：*Anaconda3.7*[https://www.anaconda.com/]  
 网络数据：karate.txt  
 
 :stuck_out_tongue_winking_eye:If you think it is helpful or interesting for you, please follow me.
