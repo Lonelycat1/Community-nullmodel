@@ -10,6 +10,11 @@
 * karate.py    
 2、减弱社区结构测试程序(位于decrease_community_nullmodel文件夹)
 ***  
+**decrease_community_nullmodel**  
+* community_detection_algorithm.py  
+* communitynullmodel_new.py  
+* decrease_community_structure.py  
+* karate.py  
 ## Depend on the environment：
 运行环境：*Anconda3.7*  
 网络数据：karate.txt  
