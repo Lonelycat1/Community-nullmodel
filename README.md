@@ -1,4 +1,4 @@
-# project
+#**Community Nullmodel**
 运行环境：anconda3.7;  
 demo主要使用了karate网络作为测试网络;  
 community_nullmodel.py为自定义零模型库;  
