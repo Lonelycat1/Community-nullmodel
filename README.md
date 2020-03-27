@@ -6,7 +6,7 @@
 1、保持中尺度网络特性测试程序  
 **construct_benchmark_network_nullmodel**  
 * communitynullmodel_new.py     
-* benchmark-test.py    
+* ` benchmark-test.py`     
 * karate.py  
 *** 
 2、减弱社区结构测试程序  
@@ -18,6 +18,8 @@
 ## Depend on the environment：
 运行环境：*Anconda3.7*  
 网络数据：karate.txt  
+
+
 
 
 
