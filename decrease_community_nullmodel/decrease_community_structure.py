@@ -4,7 +4,6 @@ Created on Sun Mar 15 18:48:12 2020
 
 @author: LX
 """
-
 ######################################基于社区强弱变化零模型的网络构造########################################
 import networkx as nx
 import igraph as ig
