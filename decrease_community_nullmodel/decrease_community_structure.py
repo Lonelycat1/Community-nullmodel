@@ -10,8 +10,6 @@ import networkx as nx
 import igraph as ig
 import pandas as pd
 from communitynullmodel_new import*
-from community_detection_algorithm  import DECD
-
 '''
 ###################################################
 #函数名称：load_Graph
@@ -149,10 +147,3 @@ for i in range(0,10):
     membership_changed = network_community(community_list_changed,GAS)
     #保存社区文件
     save_community_file(membership,'changed_community'+str(i),'.txt')
-    
-    
-    
-    
-    
-    
-    
