@@ -6,12 +6,20 @@ Created on Sun Mar 15 18:48:12 2020
 """
 
 ######################################基于社区强弱变化零模型的网络构造########################################
-
-from communitynullmodel_new import*
 import networkx as nx
 import igraph as ig
 import pandas as pd
+from communitynullmodel_new import*
 from community_detection_algorithm  import DECD
+
+'''
+###################################################
+#函数名称：load_Graph
+#功能：根据文件生成无向网络
+#输入参数：filename(网络数据文件名称)
+#输出参数：G(生成好的网络)
+###################################################
+'''
 def load_Graph(filename):
     #读入网络数据
     network = open(filename)            #
@@ -85,17 +93,17 @@ def save_community_file(membership,filename,filelayout):
     save_file_layout = filelayout
     data.to_csv(save_community_name + save_file_layout,header=None,sep=' ')
 
-# 读入网络数据        
+########################减弱社区结构测试程序###########################    
+# 读入原始网络数据        
 Gn = nx.read_edgelist('karate.txt')  
 Gn = Gn.to_undirected()             #将网络转化为无向
-#根据网络边列表生成图
+#根据网络的数据生成图
 G = nx.Graph()
 G = load_Graph('karate.txt')
-
 edges_dic = nx.to_dict_of_lists(G)
 M = G.number_of_edges()             #网络中总边数
 N = G.number_of_nodes()             #网络中总节点数
-origin_edges = nx.to_edgelist(G)
+origin_edges = nx.to_edgelist(G)    #网络中边的列表
 
 new_list = []
 for edge_i in range(0,len(origin_edges)):
@@ -107,7 +115,7 @@ g = ig.Graph(new_list)
 h = g.community_infomap()
 community_list = list(h)
 membership = network_community(community_list,G)
-Q = ig.GraphBase.modularity(g, membership)    #计算原始网络Q值
+Q = ig.GraphBase.modularity(g, membership)      #计算原始网络Q值
 
 #将networkx中的节点编号转换成字符才能和igraph里面的节点对应上
 community_list_s  = community_list     
@@ -115,31 +123,33 @@ for i in range(0,len(community_list)):
     community_list_s[i] = list(map(str, community_list[i]))
 
 ##改变原始网络结构
-steps=1
-nswap =2*M  #交换次数2l,l=M    
-maxtry = 10*nswap
+steps = 1
+nswap = 2*M         #交换次数2l,l=M    
+maxtry = 10*nswap   #最大尝试次数
 
 for i in range(0,10):
+    ##调用零模型重构网络
     GAS = Q_decrease_1k(Gn,community_list_s,nswap=nswap, max_tries=maxtry)
+    ##保存新网络数据
     nx.write_edgelist(GAS,'changed_network'+str(i)+'.txt',data=False)
+    
+    ##保存新网络社区文件
     edges_dic = nx.to_dict_of_lists(GAS)
     changed_edges = nx.to_edgelist(GAS)
-
     new_list_changed = []
     for edge_i in range(0,len(changed_edges)):
         node_dict = list(changed_edges)[edge_i]
         new_list.append([node_dict[0],node_dict[1]])
     
-    
-    #用变向量列表创建图形           
-    g_changed = ig.Graph(new_list_changed)  
+    #用变向量列表创建图形         
+    g_changed = ig.Graph(new_list_changed)      
+    #生成新网络的社区文件
     h = g_changed.community_infomap()
     community_list_changed = list(h)
     membership_changed = network_community(community_list_changed,GAS)
-    Q_changed = ig.GraphBase.modularity(g, membership_changed)    #计算原始网络Q值
+    #保存社区文件
     save_community_file(membership,'changed_community'+str(i),'.txt')
     
-    DECD('changed_network'+str(i)+'.txt','changed_community'+str(i)+'.txt')
     
     
     
