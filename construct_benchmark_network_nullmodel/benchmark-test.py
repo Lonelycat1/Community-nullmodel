@@ -158,7 +158,7 @@ def save_community_file(membership,filename,filelayout):
     save_community_name = filename
     save_file_layout = filelayout
     data.to_csv(save_community_name + save_file_layout,header=None,sep=' ')
-
+#########################测试程序开始##########################
 # 读入网络数据        
 Gn = nx.read_edgelist('karate.txt')  
 Gn = Gn.to_undirected()             #将网络转化为无向
