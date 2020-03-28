@@ -8,7 +8,6 @@ revised on Oct 15 2017
 import networkx as nx
 import random
 import copy
-
 '''
 ###################################################
 #函数名称：config_model
@@ -67,7 +66,7 @@ def dict_degree_nodes(degree_node_list):
             D[degree_node_i[0]].append(degree_node_i[1])
     return D
  
-  '''
+ '''
 ###################################################
 #函数名称：inner_random_0k
 #功能：基于随机断边重连的0阶零模型，
@@ -916,7 +915,7 @@ def inter_community_swap(G0,node_community_list,nswap=1, max_tries=100):
                 
     return G     	
     
-  '''
+'''
 ###################################################
 #函数名称：Q_increase_1k
 #功能：保证1阶特性不变的前提下，增加社区间的连边，减少社区内部的连边，
@@ -976,7 +975,7 @@ def Q_increase_1k(G0,node_community_list,nswap=1, max_tries=100):
                         swapcount+=1							  #改变成功次数加1
                 
     return G     
- '''
+'''
 ###################################################
 #函数名称：Q_decrease_1k
 #功能：保证1阶特性不变的前提下，增加社区间的连边，减少社区内部的连边，
