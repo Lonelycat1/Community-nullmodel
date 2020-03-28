@@ -5,11 +5,8 @@ Created on Sun Mar 15 18:48:12 2020
 @author: LX
 """
 
-##############################################################################
-#二、基于社区强弱变化零模型的网络构造
-#1、增强社区结构的零模型构造和减弱社区结构的零模型构造在communitynullmodel_new文件中
-#分别为Q_decrease和Q_increase
-#2、网络社区检测评价能力测试：这部分使用的算法均在整合在一起的community detection algorithm文件中
+######################################基于社区强弱变化零模型的网络构造########################################
+
 from communitynullmodel_new import*
 import networkx as nx
 import igraph as ig
@@ -122,7 +119,7 @@ steps=1
 nswap =2*M  #交换次数2l,l=M    
 maxtry = 10*nswap
 
-for i in range(0,1):
+for i in range(0,10):
     GAS = Q_decrease_1k(Gn,community_list_s,nswap=nswap, max_tries=maxtry)
     nx.write_edgelist(GAS,'changed_network'+str(i)+'.txt',data=False)
     edges_dic = nx.to_dict_of_lists(GAS)
@@ -132,7 +129,9 @@ for i in range(0,1):
     for edge_i in range(0,len(changed_edges)):
         node_dict = list(changed_edges)[edge_i]
         new_list.append([node_dict[0],node_dict[1]])
-        #用变向量列表创建图形           
+    
+    
+    #用变向量列表创建图形           
     g_changed = ig.Graph(new_list_changed)  
     h = g_changed.community_infomap()
     community_list_changed = list(h)
