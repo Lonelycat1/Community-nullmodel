@@ -9,19 +9,33 @@ import networkx as nx
 import random
 import copy
 
-#配置模型的1阶零模型
+'''
+###################################################
+#函数名称：config_model
+#功能：配置模型的1阶零模型
+#输入参数：G0(原始网路)
+#输出参数：G(设置好的网络)
+###################################################
+'''
 def config_model(G0):
     degree_seq = list(G0.degree().values()) 
     G = nx.configuration_model(degree_seq) 
     return G
 
-  
-def edge_in_community(node_community_list, edge):    
-# 功能: 判断某条边是不是社团内部连边 
-# node_community_list是网络中节点的社团归属信息
-# edge是网络中的一条连边
-# 返回布尔变量：如果是社团内部连边，返回值为1；如果是社团外部连边，返回值为0
-    
+ '''
+###################################################
+#函数名称：edge_in_community
+#功能: 判断某条边是否为社团内部连边
+#输入参数：
+#    参数1：node_comunity_list(网络中节点的社团归属信息)
+#    参数2：edge(网络中的一条连边)
+#输出参数：
+#    1：是社团内部连边
+#            or
+#    0：是社团外部连边
+###################################################
+''' 
+def edge_in_community(node_community_list, edge):        
     return_value = 0
     for community_i in node_community_list:        
         if edge[0] in community_i and edge[1] in community_i: #拿出边的两个节点
@@ -29,10 +43,22 @@ def edge_in_community(node_community_list, edge):
             return 1
     if return_value==0:
         return 0
-
-
+    
+'''
+###################################################
+#函数名称：dict_degree_nodes
+#功能：将节点的度的列表转化为以节点度为键名，节点为键值的字典
+       例：[(1,9),(2,9)] ——> {9:[1,2]}
+       
+#输入参数：degree_node_list(关于所有节点度的列表)
+            例：[(节点1,节点1的度),(节点2,节点2的度),...]
+            
+#输出参数：D(关于以节点度为关键字的字典)
+            例：{度：[节点1，节点2，..]}，其中节点1和节点2有相同的度
+###################################################
+'''
 def dict_degree_nodes(degree_node_list):
-#返回的字典为{度：[节点1，节点2，..]}，其中节点1和节点2有相同的度
+
     D = {}      
     for degree_node_i in degree_node_list:
         if degree_node_i[0] not in D:
@@ -40,15 +66,22 @@ def dict_degree_nodes(degree_node_list):
         else:
             D[degree_node_i[0]].append(degree_node_i[1])
     return D
-    
+ 
+  '''
+###################################################
+#函数名称：inner_random_0k
+#功能：基于随机断边重连的0阶零模型，
+      (保证0阶特性不变的前提下，对社区内部的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''  
 def inner_random_0k(G0,node_community_list,nswap=1, max_tries=100,connected=1):  
-# 基于随机断边重连的0阶零模型
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
 #    if not nx.is_connected(G0):
 #        raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -92,15 +125,21 @@ def inner_random_0k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
             break
     return G
 
-
+'''
+###################################################
+#函数名称：inner_random_1k
+#功能：基于随机断边重连的1阶零模型
+       (保证1阶特性不变的前提下，对社区内部的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inner_random_1k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
-# 保证度分布特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -154,15 +193,21 @@ def inner_random_1k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                             continue 
                     swapcount=swapcount+1              
     return G       
-
-def inner_random_2k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
-# 保证2k特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
+'''
+###################################################
+#函数名称：inner_random_2k
+#功能：基于随机断边重连的2阶零模型
+       (保证2阶特性不变的前提下，对社区内部的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
+def inner_random_2k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -217,15 +262,21 @@ def inner_random_2k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                             swapcount=swapcount+1              
     return G       
  
-
+'''
+###################################################
+#函数名称：inner_random_25k
+#功能：基于随机断边重连的2阶零模型
+       (保证2.5阶特性不变的前提下，对社区内部的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inner_random_25k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
-# 保证2.5k特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -295,14 +346,21 @@ def inner_random_25k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                                 swapcount=swapcount+1 
                 
     return G       
-
+'''
+###################################################
+#函数名称：inner_random_3k
+#功能：基于随机断边重连的3阶零模型
+       (保证3阶特性不变的前提下，对社区内部的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inner_random_3k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
-# 保证3k特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
 
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
@@ -367,14 +425,21 @@ def inner_random_3k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                                     continue 
                             swapcount=swapcount+1              
     return G       
-
+'''
+###################################################
+#函数名称：inter_random_0k
+#功能：基于随机断边重连的0阶零模型
+      (保证0阶特性不变的前提下，对社区间的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inter_random_0k(G0,node_community_list,nswap=1, max_tries=100,connected=1):  
-# 基于随机断边重连的0阶零模型
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
 
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
@@ -421,15 +486,21 @@ def inter_random_0k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                         continue 
                     swapcount=swapcount+1             
     return G
-
+'''
+###################################################
+#函数名称：inter_random_1k
+#功能：基于随机断边重连的1阶零模型
+      (保证1阶特性不变的前提下，对社区间的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inter_random_1k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
-# 保证度分布特性不变和网络联通的情况下，交换社团外部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
 #    if not nx.is_connected(G0):
 #        raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -483,6 +554,21 @@ def inter_random_1k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                             continue 
                     swapcount=swapcount+1              
     return G   
+
+'''
+###################################################
+#函数名称：inter_random_2k
+#功能：基于随机断边重连的2阶零模型
+      (保证2阶特性不变的前提下，对社区间的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inter_random_2k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
 # 保证2k特性不变和网络联通的情况下，交换社团外部的连边
 # G0：待改变结构的网络
@@ -546,14 +632,21 @@ def inter_random_2k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                             swapcount=swapcount+1              
     return G       
 
-
+'''
+###################################################
+#函数名称：inter_random_25k
+#功能：基于随机断边重连的2.5阶零模型
+      (保证2.5阶特性不变的前提下，对社区间的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inter_random_25k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
-# 保证2.5k特性不变和网络联通的情况下，交换社团外部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
 
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
@@ -626,15 +719,21 @@ def inter_random_25k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
     return G       
 
 
-
+'''
+###################################################
+#函数名称：inter_random_3k
+#功能：基于随机断边重连的3阶零模型
+      (保证3阶特性不变的前提下，对社区间的边进行置乱)
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2：node_community_list(网络中节点的社团归属信息)
+       参数3：nswap(改变成功的系数，默认值为1)
+       参数4：max_tries(尝试改变的次数，默认值为100)
+       参数5：connected(是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inter_random_3k(G0,node_community_list,nswap=1, max_tries=100,connected=1): 
-# 保证3k特性不变和网络联通的情况下，交换社团外部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -699,12 +798,19 @@ def inter_random_3k(G0,node_community_list,nswap=1, max_tries=100,connected=1):
                             swapcount=swapcount+1              
     return G       
 
+'''
+###################################################
+#函数名称：inner_community_swap
+#功能：保证度分布不变的情况下，交换社团内的连边
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2: node_community_list(网络中节点的社团归属信息)
+       参数2：nswap(改变成功的系数，默认值为1)
+       参数3：max_tries(尝试改变的次数，默认值为100)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inner_community_swap(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证度分布不变的情况下，交换社团内的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
 
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
@@ -749,14 +855,20 @@ def inner_community_swap(G0,node_community_list,nswap=1, max_tries=100):
                         G.remove_edge(x,y)
                 
                         swapcount+=1							  #改变成功次数加1               
-    return G       
-    
+    return G
+'''
+###################################################
+#函数名称：inter_community_swap
+#功能：保证度分布不变的情况下，交换社团间的连边
+#输入参数：
+       参数1：G0(待改变结构的网络)
+       参数2: node_community_list(网络中节点的社团归属信息)
+       参数2：nswap(改变成功的系数，默认值为1)
+       参数3：max_tries(尝试改变的次数，默认值为100)
+#输出参数：G(改变结构后的网络)
+###################################################
+'''
 def inter_community_swap(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证度分布不变的情况下，交换社团间的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
 
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
@@ -804,14 +916,21 @@ def inter_community_swap(G0,node_community_list,nswap=1, max_tries=100):
                 
     return G     	
     
+  '''
+###################################################
+#函数名称：Q_increase_1k
+#功能：保证1阶特性不变的前提下，增加社区间的连边，减少社区内部的连边，
+       以达到减弱社区结构的作用。
+#输入参数：
+    参数1：G0(待改变结构的网络)
+    参数2：node_community_list（网络中节点的社团归属信息）
+    参数3：nswap（改变成功的系数，默认值为1）
+    参数4：max_tries（尝试改变的次数，默认值为100）
+#输出参数：G(改变后的网络)
+###################################################
+'''      
+def Q_increase_1k(G0,node_community_list,nswap=1, max_tries=100): 
     
-def Q_increase(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证度分布不变的情况下，增强社团结构特性
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-
     if not nx.is_connected(G0):
         raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -857,14 +976,20 @@ def Q_increase(G0,node_community_list,nswap=1, max_tries=100):
                         swapcount+=1							  #改变成功次数加1
                 
     return G     
-
+ '''
+###################################################
+#函数名称：Q_decrease_1k
+#功能：保证1阶特性不变的前提下，增加社区间的连边，减少社区内部的连边，
+       以达到减弱社区结构的作用。
+#输入参数：
+    参数1：G0(待改变结构的网络)
+    参数2：node_community_list（网络中节点的社团归属信息）
+    参数3：nswap（改变成功的系数，默认值为1）
+    参数4：max_tries（尝试改变的次数，默认值为100）
+#输出参数：G(改变后的网络)
+###################################################
+'''    
 def Q_decrease_1k(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证度分布不变的情况下，减弱社团结构特性
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-
 #    if not nx.is_connected(G0):
 #        raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -911,15 +1036,21 @@ def Q_decrease_1k(G0,node_community_list,nswap=1, max_tries=100):
                         swapcount+=1							  #改变成功次数加1
                 
     return G     
-    
+'''
+###################################################
+#函数名称：Q_decrease_2k
+#功能：保持2阶特性不变的前提下，增加社区间的连边，减少社区内部的连边，
+       以达到减弱社区结构的作用
+#输入参数：
+    参数1：G0(待改变结构的网络)
+    参数2：node_community_list（网络中节点的社团归属信息）
+    参数3：nswap（改变成功的系数，默认值为1）
+    参数4：max_tries（尝试改变的次数，默认值为100）
+#输出参数：G(改变后的网络)
+###################################################
+'''     
 def Q_decrease_2k(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证2k特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
 # connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
 #    if not nx.is_connected(G0):
 #        raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -966,15 +1097,20 @@ def Q_decrease_2k(G0,node_community_list,nswap=1, max_tries=100):
      
                             swapcount=swapcount+1              
     return G           
-    
+'''
+###################################################
+#函数名称：Q_increase_2k
+#功能：保持2阶特性不变的前提下，社区减少间的连边，增加社区内部的连边，
+       以达到增强社区结构的作用
+#输入参数：
+    参数1：G0(待改变结构的网络)
+    参数2：node_community_list（网络中节点的社团归属信息）
+    参数3：nswap（改变成功的系数，默认值为1）
+    参数4：max_tries（尝试改变的次数，默认值为100）
+#输出参数：G(改变后的网络)
+###################################################
+'''   
 def Q_increase_2k(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证2k特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
 #    if not nx.is_connected(G0):
 #        raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -1021,15 +1157,21 @@ def Q_increase_2k(G0,node_community_list,nswap=1, max_tries=100):
      
                             swapcount=swapcount+1              
     return G              
-    
+ 
+'''
+###################################################
+#函数名称：Q_decrease_3k
+#功能：保证3阶特性不变的前提下，增加社区间的连边，减少社区内部的连边，
+       以达到减弱社区结构的作用。
+#输入参数：
+    参数1：G0(待改变结构的网络)
+    参数2：node_community_list（网络中节点的社团归属信息）
+    参数3：nswap（改变成功的系数，默认值为1）
+    参数4：max_tries（尝试改变的次数，默认值为100）
+#输出参数：G(改变后的网络)
+###################################################
+'''     
 def Q_decrease_3k(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证3k特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
-
 #    if not nx.is_connected(G0):
 #        raise nx.NetworkXError("非连通图，必须为连通图")
     if G0.is_directed():
@@ -1086,14 +1228,20 @@ def Q_decrease_3k(G0,node_community_list,nswap=1, max_tries=100):
                                 continue 
                             swapcount=swapcount+1              
     return G           
-    
+'''
+###################################################
+#函数名称：Q_increase_3k
+#功能：保持3阶特性不变的前提下，社区减少间的连边，增加社区内部的连边，
+       以达到增强社区结构的作用
+#输入参数：
+    参数1：G0(待改变结构的网络)
+    参数2：node_community_list（网络中节点的社团归属信息）
+    参数3：nswap（改变成功的系数，默认值为1）
+    参数4：max_tries（尝试改变的次数，默认值为100）
+#输出参数：G(改变后的网络)
+###################################################
+'''     
 def Q_increase_3k(G0,node_community_list,nswap=1, max_tries=100): 
-# 保证3k特性不变和网络联通的情况下，交换社团内部的连边
-# G0：待改变结构的网络
-# node_community_list：是网络中节点的社团归属信息
-# nswap：是改变成功的系数，默认值为1
-# max_tries：是尝试改变的次数，默认值为100
-# connected：是否需要保证网络的联通特性，参数为1需要保持，参数为0不需要保持
 
 #    if not nx.is_connected(G0):
 #        raise nx.NetworkXError("非连通图，必须为连通图")
