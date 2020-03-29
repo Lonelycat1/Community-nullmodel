@@ -32,10 +32,10 @@
 >>>Q_decrease_1k  
 >>>Q_decrease_2k  
 >>>Q_decrease_3k  
->>连边判断函数：
+>>连边判断函数：  
 >>>edge_in_community(node_community_list, edge)  
->>交换连边函数：
->>>inner_community_swap  
+>>交换连边函数：  
+>>>inner_community_swap    
 >>>inter_community_swap  
 
 
