@@ -27,7 +27,7 @@ from numpy import random as nr
 ###################################################
 '''
 def degree_hist(G):#节点度分布
-    degree_histogram=nx.degree_histogram(G)
+    degree_histogram = nx.degree_histogram(G)
     return degree_histogram    
 
 '''
@@ -68,8 +68,8 @@ def Edges(communitydivision_list,edges_dic):
 ###################################################
 '''   
 def MU(community_list,edges_dic):
-    edges_inside=[]
-    edges_outside=[]
+    edges_inside = []
+    edges_outside = []
     
     #通过循环将所有小社团所得结果放在空列表里
     for i in range(len(community_list)):
@@ -78,7 +78,7 @@ def MU(community_list,edges_dic):
         edges_inside.append(edgesinside)    #获取网络中所有社区内部的连边数
         edges_outside.append(edgesoutside)  #获取网络中所有社区外部连边数
     #all_edgesinside=sum(edges_inside)
-    all_edgesoutside=sum(edges_outside)   
+    all_edgesoutside = sum(edges_outside)   
     mu=all_edgesoutside*1.0/M
     
     return mu
@@ -192,7 +192,7 @@ save_community_file(membership,'origin_community','.txt')
 #将networkx中的节点编号转换成字符才能和igraph里面的节点对应上
 community_list_s  = community_list     
 for i in range(0,len(community_list)):                 
-    community_list_s[i]=list(map(str, community_list[i]))
+    community_list_s[i] = list(map(str, community_list[i]))
 origin_mu =  MU(community_list,origin_edges)        #原始网络模糊系数
     
 ##改变原始网络结构
