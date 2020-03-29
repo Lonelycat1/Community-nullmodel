@@ -13,29 +13,30 @@
 ## 相关依赖文件： 
 >**community_nullmodel:**
 >>社区内部随机置乱函数： 
->>>
->>>
->>>
->>>
->>>
+>>>inner_random_0k  
+>>>inner_random_1k  
+>>>inner_random_2k  
+>>>inner_random_25k  
+>>>inner_random_3k  
 >>社区外部随机置乱函数：  
->>>
->>>
->>>
->>>
+>>>inter_random_0k  
+>>>inter_random_1k  
+>>>inter_random_2k  
+>>>inter_random_25k  
+>>>inter_random_3k  
 >>增强社区结构函数：
->>>
->>>
->>>
+>>>Q_increase_1k  
+>>>Q_increase_2k  
+>>>Q_increase_3k  
 >>减弱社区结构函数：  
->>>
->>>
->>>
+>>>Q_decrease_1k  
+>>>Q_decrease_2k  
+>>>Q_decrease_3k  
 >>连边判断函数：
->>>
+>>>edge_in_community(node_community_list, edge)  
 >>交换连边函数：
->>>
->>>
+>>>inner_community_swap  
+>>>inter_community_swap  
 
 
 
