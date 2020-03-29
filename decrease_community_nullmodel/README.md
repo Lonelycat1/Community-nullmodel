@@ -12,7 +12,7 @@
 >> 8、保存新网络数据和社区信息；  
 ## 相关依赖文件： 
 >**community_nullmodel:**
->>社区内部随机置乱函数： 
+>>社区内部随机置乱函数：  
 >>>inner_random_0k  
 >>>inner_random_1k  
 >>>inner_random_2k  
@@ -24,7 +24,7 @@
 >>>inter_random_2k  
 >>>inter_random_25k  
 >>>inter_random_3k  
->>增强社区结构函数：
+>>增强社区结构函数：  
 >>>Q_increase_1k  
 >>>Q_increase_2k  
 >>>Q_increase_3k  
