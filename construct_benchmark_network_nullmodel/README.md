@@ -47,10 +47,10 @@ Process Description：
 
 **Relevant Explanation:**  
 0-3k represents the property of order 0-3  
-0k:The distribution characteristics of average degree of nodes remains unchanged  
-1k:The distribution characteristics of node degree unchanged in the network  
-2k:The distribution of network association degree remains unchanged    
-25K:The clustering coefficient related to the degree before and after breaking edge remains unchanged  
-3k:the distribution characteristics of network joint edges remains unchanged  
-changed_community:file of new network node ownership information  
-changed_network:file of new network data  
+0k: The distribution characteristics of average degree of nodes remains unchanged  
+1k: The distribution characteristics of node degree unchanged in the network  
+2k: The distribution of network association degree remains unchanged    
+25K: The clustering coefficient related to the degree before and after breaking edge remains unchanged  
+3k: The distribution characteristics of network joint edges remains unchanged  
+changed_community: file of new network node ownership information  
+changed_network: file of new network data  
