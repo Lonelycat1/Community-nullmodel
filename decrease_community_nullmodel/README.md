@@ -1,6 +1,6 @@
 # **Weaken the community structure test program**  
-## 测试程序描述：  
-目的：减弱社区结构  
+## program process:  
+**Objectiv: Weaken the community structure 
 程序流程： 
 >> 1、Read the data of original network;  
 >> 2、use infomap CNM algorithm to divide the original network into communities;      
@@ -48,10 +48,10 @@
 
 ## **Relevant Explanation:**  
 **0-3k represents the property of order 0-3**  
-**0k:** The  characteristics of average degree of nodes distribution remains unchanged.  
-**1k:** The characteristics of node degree distribution remains unchanged.   
-**2k:** The Joint degree distribution of network remains unchanged.    
-**25K:** The clustering coefficient related to the degree before and after disconnect for rewriting remain unchanged.  
-**3k:** The distribution characteristics of network joint edges remains unchanged  
-**changed_community:** file of new network node ownership information  
-**changed_network:** file of new network data  
+***0k:*** The  characteristics of average degree of nodes distribution remains unchanged.  
+***1k:*** The characteristics of node degree distribution remains unchanged.   
+***2k:*** The Joint degree distribution of network remains unchanged.    
+***25K:*** The clustering coefficient related to the degree before and after disconnect for rewriting remain unchanged.  
+***3k:*** The distribution characteristics of network joint edges remains unchanged  
+***changed_community:*** file of new network node ownership information  
+***changed_network:*** file of new network data  
