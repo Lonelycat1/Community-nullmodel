@@ -6,7 +6,7 @@ Process Description:
 >> 2、use infomap CNM algorithm to divide the original network into communities;      
 >> 3、Get the information original network;   
 >> 4、Adjust the input parameters of the null model according to the original network information;
->> 5、According to the user's requirement, the null model of different order is selected and a new network is constructed (the test program &ensp; takes Q_decrease_1k as an example);    
+>> 5、According to the user's requirement, the null model of different order is selected and a new network is constructed (the test &ensp; program takes Q_decrease_1k as an example);    
 >> 6、Obtain a new network. And use use infomap CNM algorithm to divide the original network into communities;  
 >> 7、 Save data and the node ownership information of the new network.   
  
