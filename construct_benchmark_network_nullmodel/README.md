@@ -1,5 +1,5 @@
-# **保持中尺度特性的零模型构造测试**  
-## 测试程序描述：  
+# **Maintain the mesoscale network feature test program**  
+## program：  
 目的：保持原始网络微观特性不变的前提下，随机置乱网络， 
 程序流程： 
 >> 1、读取原始网络信息；  
