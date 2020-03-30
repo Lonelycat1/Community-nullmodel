@@ -11,14 +11,14 @@ Process Description：
 >> 7、Obtain a new network GAS. Then, use ifomap algorithm to to divide GAS into communities. And save the node ownership information of GAS.   
 ## Dependent documents: 
 >**community_nullmodel:**
->>Random scrambling function in the community:  
+>>Edge random scrambling function inside the community:  
 >>>inner_random_0k  
 >>>inner_random_1k  
 >>>inner_random_2k  
 >>>inner_random_25k  
 >>>inner_random_3k  
 
->>Random scrambling function outside the community:  
+>>Edge random scrambling function outside the communityn:  
 >>>inter_random_0k  
 >>>inter_random_1k  
 >>>inter_random_2k  
@@ -38,7 +38,7 @@ Process Description：
 >>Edge judgment function:  
 >>>edge_in_community   
 
->>swap connection function:  
+>>swap edge function:  
 >>>inner_community_swap    
 >>>inter_community_swap  
 
@@ -47,10 +47,10 @@ Process Description：
 
 **Relevant Explanation:**  
 0-3k represents the property of order 0-3  
-0k: The distribution characteristics of average degree of nodes remains unchanged  
-1k: The distribution characteristics of node degree unchanged in the network  
-2k: The distribution of network association degree remains unchanged    
-25K: The clustering coefficient related to the degree before and after breaking edge remains unchanged  
+0k: The  characteristics of average degree of nodes distribution remains unchanged.  
+1k: The characteristics of node degree distribution remains unchanged.   
+2k: The Joint degree distribution of network remains unchanged.    
+25K: The clustering coefficient related to the degree before and after disconnect for rewriting remain unchanged.  
 3k: The distribution characteristics of network joint edges remains unchanged  
 changed_community: file of new network node ownership information  
 changed_network: file of new network data  
