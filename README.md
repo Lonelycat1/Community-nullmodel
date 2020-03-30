@@ -1,6 +1,6 @@
 # **Community Nullmodel**  
 ## Project Description：
-This project is a test program for community detection benchmark network construction based on null model, which aims to reconstruct the network according to the user's requirements to generate a suitable artificial network.  The project has two parts, as follow:    
+&ensp; This project is a test program for community detection benchmark network construction based on null model, which aims to reconstruct the network according to the user's requirements to generate a suitable artificial network.  The project has two parts, as follow:    
 *** 
 ### ***Part 1:* Maintain the mesoscale network feature test program**  
 **mesoscale_benchmark_test**  
