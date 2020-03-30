@@ -1,4 +1,4 @@
-# **Maintain the mesoscale network feature test program**  
+# **Maintain the mesoscale network characteristics test program**  
 ## program process:  
 **Objective**: to randomly scramble the network on the premise of keeping the original network characteristics unchanged.   
 Process Description： 
@@ -11,46 +11,46 @@ Process Description：
 >> 7、Obtain a new network GAS. Then, use ifomap algorithm to to divide GAS into communities. And save the node ownership information of GAS.   
 ## Dependent documents: 
 >**community_nullmodel:**
->>社区内部随机置乱函数：  
+>>Random scrambling function in the community:  
 >>>inner_random_0k  
 >>>inner_random_1k  
 >>>inner_random_2k  
 >>>inner_random_25k  
 >>>inner_random_3k  
 
->>社区外部随机置乱函数：  
+>>Random scrambling function outside the community:  
 >>>inter_random_0k  
 >>>inter_random_1k  
 >>>inter_random_2k  
 >>>inter_random_25k  
 >>>inter_random_3k  
 
->>增强社区结构函数：  
+>>Enhanced community structure function:  
 >>>Q_increase_1k  
 >>>Q_increase_2k  
 >>>Q_increase_3k  
 
->>减弱社区结构函数：  
+>>Weaken the community structure function:  
 >>>Q_decrease_1k  
 >>>Q_decrease_2k  
 >>>Q_decrease_3k  
 
->>连边判断函数：  
+>>Edge judgment function:  
 >>>edge_in_community   
 
->>交换连边函数：  
+>>swap connection function:  
 >>>inner_community_swap    
 >>>inter_community_swap  
 
->>节点度字典转换函数：  
+>>Node degree dictionary conversion function:  
 >>>dict_degree_nodes  
 
-**相关解释说明：**  
-0-3k代表所保持0-3阶特性  
-0k:保证节点平均度分布特性不变  
-1k:保证网络中节点度分布特性不变  
-2k:保证网络联合度分布特不变    
-25K:保证网络联合度分布特不变和断边前后度相关的聚类系数不变  
-3k:保证网络联合边度分布特性不变  
-changed_community:新网络节点归属信息保存文件  
-changed_network:新网络数据保存文件  
+**Relevant Explanation:**  
+0-3k represents the property of order 0-3  
+0k:The distribution characteristics of average degree of nodes remains unchanged  
+1k:The distribution characteristics of node degree unchanged in the network  
+2k:The distribution of network association degree remains unchanged    
+25K:The clustering coefficient related to the degree before and after breaking edge remains unchanged  
+3k:the distribution characteristics of network joint edges remains unchanged  
+changed_community:file of new network node ownership information  
+changed_network:file of new network data  
