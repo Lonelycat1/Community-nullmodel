@@ -26,7 +26,7 @@ Involved network characteristics:
 ### ***Part 2:* Weaken the community structure test program** 
 **weaken_benchmark_test**  
 * community_detection_algorithm.py  
-* ` decrease_community_structure.py`  
+* ` weaken_benchmark_test.py`  
 * communitynullmodel_new.py  
 * karate.txt  
 
