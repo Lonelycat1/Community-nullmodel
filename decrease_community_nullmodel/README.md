@@ -1,12 +1,12 @@
 # **Weaken the community structure test program**  
 ## program process:  
 **Objectiv: Weaken the community structure 
-程序流程： 
+Process Description:    
 >> 1、Read the data of original network;  
 >> 2、use infomap CNM algorithm to divide the original network into communities;      
 >> 3、Get the information original network;   
 >> 4、Adjust the input parameters of the null model according to the original network information;
->> 5、According to the user's demand, the null model of different order is selected and a new network is constructed (the test program takes );    
+>> 5、According to the user's demand, the null model of different order is selected and a new network is constructed (the test program takes Q_decrease_1k an example);    
 >> 6、Obtain a new network. And use use infomap CNM algorithm to divide the original network into communities;  
 >> 7、 Save data and the node ownership information of the new network.   
  
