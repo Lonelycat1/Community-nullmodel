@@ -35,7 +35,7 @@
 高亮部分为主程序文件，communitynullmodel_new.py、community_detection_algorithm.py和karate.txt分别为主程序所依赖的库文件与网络数据文件。   
 ## Depend on the environment：
 运行环境：[*Anaconda3.7*](https://www.anaconda.com/)  
-网络数据：[karate.zip](http://www-personal.umich.edu/~mejn/netdata/karate.zip/) 
+网络数据：[karate.zip](http://www-personal.umich.edu/~mejn/netdata/karate.zip) 
 
 :stuck_out_tongue_winking_eye:If you think it is helpful or interesting for you, please follow me.
 
