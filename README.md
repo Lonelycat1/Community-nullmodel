@@ -12,12 +12,12 @@
 **function description：**  
 基于随机断边重连原理，在保持各种网络特性不变的情况下，对原始网络(karate网络)进行重构，生成新网络并保存。  
 高亮部分为主程序文件，communitynullmodel_new.py和karate.txt分别为主程序所依赖的库文件与网络数据文件。  
-所涉及到的网络微观特性：  
-1、Q  
-2、MU(模糊系数)  
+所涉及到的网络特性：  
+1、模块度  
+2、模糊系数  
 3、社区数  
 4、平均路径长度  
-5、betweeness介数  
+5、介数  
 6、匹配系数  
 7、聚类系数  
 8、平均聚类系数  
@@ -35,7 +35,7 @@
 高亮部分为主程序文件，communitynullmodel_new.py、community_detection_algorithm.py和karate.txt分别为主程序所依赖的库文件与网络数据文件。   
 ## Depend on the environment：
 运行环境：[*Anaconda3.7*](https://www.anaconda.com/)  
-网络数据：karate.txt  
+网络数据：[karate.zip](http://www-personal.umich.edu/~mejn/netdata/karate.zip/) 
 
 :stuck_out_tongue_winking_eye:If you think it is helpful or interesting for you, please follow me.
 
