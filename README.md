@@ -3,8 +3,8 @@
 This project is a test program for community detection benchmark network construction based on null model, which aims to reconstruct the network according to the user's requirements to generate a suitable artificial network.  
 The project has two parts, as follow:    
 *** 
-*Part 1* Maintain the mesoscale network feature test program  
-**construct_benchmark_network_nullmodel**  
+### ***Part 1:* Maintain the mesoscale network feature test program**  
+**benchmark_test_for_mesoscale **  
 * communitynullmodel_new.py     
 * ` benchmark-test.py`     
 * karate.txt  
