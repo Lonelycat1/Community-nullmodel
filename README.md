@@ -1,9 +1,9 @@
 # **Community Nullmodel**  
 ## Project Description：
-此项目是一个基于零模型的社区检测基准网络构造的测试程序，旨在根据用户需求进行网络重构生成适合的人工网络。  
-项目共有两个部分组成，分别为:  
+This project is a test program for community detection benchmark network construction based on null model, which aims to reconstruct the network according to the user's requirements to generate a suitable artificial network.  
+The project has two parts, as follow:    
 *** 
-1、保持中尺度网络特性测试程序  
+*part |*Maintain the mesoscale network feature test program  
 **construct_benchmark_network_nullmodel**  
 * communitynullmodel_new.py     
 * ` benchmark-test.py`     
