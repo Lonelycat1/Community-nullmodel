@@ -46,7 +46,7 @@
 >>Node degree dictionary conversion function:  
 >>>dict_degree_nodes  
 
-##**Relevant Explanation:**  
+## **Relevant Explanation:**  
 **0-3k represents the property of order 0-3**  
 **0k:** The  characteristics of average degree of nodes distribution remains unchanged.  
 **1k:** The characteristics of node degree distribution remains unchanged.   
