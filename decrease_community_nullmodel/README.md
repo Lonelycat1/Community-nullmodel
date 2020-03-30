@@ -6,7 +6,7 @@ Process Description:
 >> 2、use infomap CNM algorithm to divide the original network into communities;      
 >> 3、Get the information original network;   
 >> 4、Adjust the input parameters of the null model according to the original network information;
->> 5、According to the user's demand, the null model of different order is selected and a new network is constructed (the test program &ensp;takes Q_decrease_1k as an example);    
+>> 5、According to the user's requirement, the null model of different order is selected and a new network is constructed (the test program &ensp; takes Q_decrease_1k as an example);    
 >> 6、Obtain a new network. And use use infomap CNM algorithm to divide the original network into communities;  
 >> 7、 Save data and the node ownership information of the new network.   
  
@@ -53,5 +53,5 @@ Process Description:
 &ensp;***2k:*** The Joint degree distribution of network remains unchanged.    
 &ensp;***25K:*** The clustering coefficient related to the degree before and after disconnect for rewriting remain unchanged.  
 &ensp;***3k:*** The distribution characteristics of network joint edges remains unchanged  
-&ensp;***changed_community:*** file of new network node ownership information  
-&ensp;***changed_network:*** file of new network data  
+***changed_community:*** file of new network node ownership information  
+***changed_network:*** file of new network data  
