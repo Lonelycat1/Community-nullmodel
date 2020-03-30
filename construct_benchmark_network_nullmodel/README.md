@@ -3,11 +3,11 @@
 **Objective**: to randomly scramble the network on the premise of keeping the original network characteristics unchanged.   
 Process Description： 
 >> 1、Read the data of original network;  
->> 2、use infomap Infomap algorithm to divide the original network into communities；    
->> 3、Get the information original network; 
+>> 2、use infomap Infomap algorithm to divide the original network into communities;      
+>> 3、Get the information original network;   
 >> 4、Adjust the input parameters of the null model according to the original network information;
->> 5、According to the user's demand, the null model of different order is selected and a new network is constructed (the test program takes the null model of order 1 as an example).  
->> 6、Adjust the fuzzy coefficient mu to  controll the ratio of the inner and outer edges of the community i;
+>> 5、According to the user's demand, the null model of different order is selected and a new network is constructed (the test program takes the null model of order 1 as an example);    
+>> 6、Adjust the fuzzy coefficient mu to  controll the ratio of the inner and outer edges of the community;  
 >> 7、Obtain a new network GAS. Then, use ifomap algorithm to to divide GAS into communities. And save the node ownership information of GAS.   
 ## Dependent documents: 
 >**community_nullmodel:**
