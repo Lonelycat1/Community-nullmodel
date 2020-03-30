@@ -30,11 +30,11 @@
 * karate.txt  
 
 **function description：**   
-基于随机断边重连原理，将社区内部的连边随机断开生成社区外的连边，将原始网络(karate网络)重构生成新网络并保存。  
-高亮部分为主程序文件，communitynullmodel_new.py、community_detection_algorithm.py和karate.txt分别为主程序所依赖的库文件与网络数据文件。   
+Based on the principle of random broken edge reconnection, the connection inside the community is randomly disconnected to generate the connection outside the community, and the original network (karate network) is reconstructed to generate a new network and saved.  
+The highlighted part is the main program file. Communitynullmodel_new.py is a library file on which  main program depends. And karate.txt is a file of network data.     
 ## Depend on the environment：
-运行环境：[*Anaconda3.7*](https://www.anaconda.com/)  
-网络数据：[karate.zip](http://www-personal.umich.edu/~mejn/netdata/karate.zip) 
+Runtime Environment：[*Anaconda3.7*](https://www.anaconda.com/)  
+Network Data：[karate.zip](http://www-personal.umich.edu/~mejn/netdata/karate.zip) 
 
 :stuck_out_tongue_winking_eye:If you think it is helpful or interesting for you, please follow me.
 
