@@ -10,48 +10,48 @@
 >> 6、Obtain a new network. And use use infomap CNM algorithm to divide the original network into communities;  
 >> 7、 Save data and the node ownership information of the new network.   
  
-## 相关依赖文件： 
+## Dependent documents: 
 >**community_nullmodel:**
->>社区内部随机置乱函数：  
+>>Edge random scrambling function inside the community:  
 >>>inner_random_0k  
 >>>inner_random_1k  
 >>>inner_random_2k  
 >>>inner_random_25k  
 >>>inner_random_3k  
 
->>社区外部随机置乱函数：  
+>>Edge random scrambling function outside the communityn:  
 >>>inter_random_0k  
 >>>inter_random_1k  
 >>>inter_random_2k  
 >>>inter_random_25k  
 >>>inter_random_3k  
 
->>增强社区结构函数：  
+>>Enhanced community structure function:  
 >>>Q_increase_1k  
 >>>Q_increase_2k  
 >>>Q_increase_3k  
 
->>减弱社区结构函数：  
+>>Weaken the community structure function:  
 >>>Q_decrease_1k  
 >>>Q_decrease_2k  
 >>>Q_decrease_3k  
 
->>连边判断函数：  
+>>Edge judgment function:  
 >>>edge_in_community   
 
->>交换连边函数：  
+>>swap edge function:  
 >>>inner_community_swap    
 >>>inter_community_swap  
 
->>节点度字典转换函数：  
+>>Node degree dictionary conversion function:  
 >>>dict_degree_nodes  
 
-**相关解释说明：**  
-0-3k代表所保持0-3阶特性  
-0k:保证节点平均度分布特性不变  
-1k:保证网络中节点度分布特性不变  
-2k:保证网络联合度分布特不变    
-25K:保证网络联合度分布特不变和断边前后度相关的聚类系数不变  
-3k:保证网络联合边度分布特性不变  
-changed_community:新网络节点归属信息保存文件  
-changed_network:新网络数据保存文件  
+**Relevant Explanation:**  
+0-3k represents the property of order 0-3  
+0k: The  characteristics of average degree of nodes distribution remains unchanged.  
+1k: The characteristics of node degree distribution remains unchanged.   
+2k: The Joint degree distribution of network remains unchanged.    
+25K: The clustering coefficient related to the degree before and after disconnect for rewriting remain unchanged.  
+3k: The distribution characteristics of network joint edges remains unchanged  
+changed_community: file of new network node ownership information  
+changed_network: file of new network data  
