@@ -9,7 +9,7 @@
 * karate.txt  
 
 **function description：**  
-&ensp; Based on the principle of random reconnection of broken edges, the original network (karate network) was reconstructed and a new network was generated and saved under the condition of keeping various network characteristics unchanged.    
+&ensp; Based on based on random rewiring, the original network (karate network) was reconstructed and a new network was generated and saved under the condition of keeping various network characteristics unchanged.    
 &ensp; The highlighted part is the main program file. Communitynullmodel_new.py is a library file on which  main program depends. And karate.txt is a file of network data.  
 
 Involved network characteristics:  
@@ -31,7 +31,7 @@ Involved network characteristics:
 * karate.txt  
 
 **function description：**   
-&ensp; Based on the principle of random broken edge reconnection, the connection inside the community is randomly disconnected to generate the connection outside the community, and the original network (karate network) is reconstructed to generate a new network and saved.  
+&ensp; Based on based on random rewiring, the connection inside the community is randomly disconnected to generate the connection outside the community, and the original network (karate network) is reconstructed to generate a new network and saved.  
 &ensp; The highlighted part is the main program file. Communitynullmodel_new.py is a library file on which  main program depends. And karate.txt is a file of network data.     
 ## Depend on the environment：
 Runtime Environment：[*Anaconda3.7*](https://www.anaconda.com/)  
