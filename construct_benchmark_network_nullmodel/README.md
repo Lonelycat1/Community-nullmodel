@@ -1,6 +1,6 @@
 # **Maintain the mesoscale network feature test program**  
 ## program process:  
-**Objective**: to randomly scramble the network on the premise of keeping the original network characteristics unchanged. 
+**Objective**: to randomly scramble the network on the premise of keeping the original network characteristics unchanged.   
 Process Description： 
 >> 1、Read the data of original network;  
 >> 2、use infomap Infomap algorithm to divide the original network into communities；    
