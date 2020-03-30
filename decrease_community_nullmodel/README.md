@@ -1,14 +1,15 @@
-# **减弱社区结构测试程序**  
+# **Weaken the community structure test program**  
 ## 测试程序描述：  
 目的：减弱社区结构  
 程序流程： 
 >> 1、Read the data of original network;  
->> 2、use CNM algorithm 算法对原始网络进行社区划分； 
->> 3、获取原始网络信息；
->> 4、根据原始网络信息调整零模型输入参数；  
->> 5、根据用户需求选择相应的功能和相应阶数的零模型(测试程序以1阶减弱社区结构零模型Q_decrease_1k为例);   
->> 6、生成新的网络，利用CNM算法对新网络进行社区划分；   
->> 7、保存新网络数据和节点归属信息；  
+>> 2、use infomap CNM algorithm to divide the original network into communities;      
+>> 3、Get the information original network;   
+>> 4、Adjust the input parameters of the null model according to the original network information;
+>> 5、According to the user's demand, the null model of different order is selected and a new network is constructed (the test program takes );    
+>> 6、Obtain a new network. And use use infomap CNM algorithm to divide the original network into communities;  
+>> 7、 Save data and the node ownership information of the new network.   
+ 
 ## 相关依赖文件： 
 >**community_nullmodel:**
 >>社区内部随机置乱函数：  
