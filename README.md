@@ -9,9 +9,9 @@
 * karate.txt  
 
 **function description：**  
-基于随机断边重连原理，在保持各种网络特性不变的情况下，对原始网络(karate网络)进行重构，生成新网络并保存。  
-高亮部分为主程序文件，communitynullmodel_new.py和karate.txt分别为主程序所依赖的库文件与网络数据文件。  
-所涉及到的网络特性：  
+    Based on the principle of random reconnection of broken edges, the original network (karate network) was reconstructed and a new network was generated and saved under the condition of keeping various network characteristics unchanged.    
+    The highlighted part is the main program file. Communitynullmodel_new.py is a library file on which  main program depends. And karate.txt is a file of network data.  
+involved network characteristics:  
 1、modularity  
 2、fuzzy coefficient  
 3、number of communities  
@@ -30,8 +30,8 @@
 * karate.txt  
 
 **function description：**   
-Based on the principle of random broken edge reconnection, the connection inside the community is randomly disconnected to generate the connection outside the community, and the original network (karate network) is reconstructed to generate a new network and saved.  
-The highlighted part is the main program file. Communitynullmodel_new.py is a library file on which  main program depends. And karate.txt is a file of network data.     
+    Based on the principle of random broken edge reconnection, the connection inside the community is randomly disconnected to generate the connection outside the community, and the original network (karate network) is reconstructed to generate a new network and saved.  
+    The highlighted part is the main program file. Communitynullmodel_new.py is a library file on which  main program depends. And karate.txt is a file of network data.     
 ## Depend on the environment：
 Runtime Environment：[*Anaconda3.7*](https://www.anaconda.com/)  
 Network Data：[karate.zip](http://www-personal.umich.edu/~mejn/netdata/karate.zip) 
