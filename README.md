@@ -22,7 +22,7 @@
 8、平均聚类系数  
 9、平均度  
 *** 
-2、减弱社区结构测试程序  
+### ***Part 2:* Weaken the community structure testing program** 
 **decrease_community_nullmodel**  
 * community_detection_algorithm.py  
 * ` decrease_community_structure.py`  
