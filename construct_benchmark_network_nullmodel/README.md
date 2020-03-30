@@ -1,15 +1,15 @@
 # **Maintain the mesoscale network feature test program**  
-## program：  
-目的：保持原始网络微观特性不变的前提下，随机置乱网络， 
-程序流程： 
->> 1、读取原始网络信息；  
->> 2、利用infomap算法对原始网络进行社区划分；    
->> 3、获取原始网络信息； 
->> 4、根据原始网络信息调整零模型输入参数；
->> 5、根据用户需求选择不同阶数的零模型，构造新的网络(测试程序以1阶零模型为例)；  
->> 6、通过调整模糊程度系数mu的大小控制社区内外部连边的比例；
->> 7、得到新网络GAS。利用infomap算法对新网络进行社区划分，并保存保存节点归属信息。   
-## 相关依赖文件： 
+## program process:  
+**Objective**: to randomly scramble the network on the premise of keeping the original network characteristics unchanged. 
+Process Description： 
+>> 1、Read the data of original network;  
+>> 2、use infomap Infomap algorithm to divide the original network into communities；    
+>> 3、Get the information original network; 
+>> 4、Adjust the input parameters of the null model according to the original network information;
+>> 5、According to the user's demand, the null model of different order is selected and a new network is constructed (the test program takes the null model of order 1 as an example).  
+>> 6、Adjust the fuzzy coefficient mu to  controll the ratio of the inner and outer edges of the community i;
+>> 7、Obtain a new network GAS. Then, use ifomap algorithm to to divide GAS into communities. And save the node ownership information of GAS.   
+## Dependent documents: 
 >**community_nullmodel:**
 >>社区内部随机置乱函数：  
 >>>inner_random_0k  
